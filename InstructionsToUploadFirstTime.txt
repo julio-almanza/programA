@@ -8,7 +8,13 @@
 		git remote add origin https://github.com/julio-almanza/programA.git
 6.- Now your local and remote are linked.
 7.- Copy to this folder your project source.
-8.- Go back to the command line and type the command:
-	add .
-9.- Do a Pull request.
-	git push origin master
+8.- Create your own branch with the command:
+	git checkout YourBranchName
+9.- Verify that you are in the branch with:
+	git status
+10.- Add the files to the repository with:
+	git add . (. means all the files)
+11.- Commit the changes:
+	git commit -m "Comment"
+12.- Push your changes to the remote branch
+	git push origin YourBranchName
