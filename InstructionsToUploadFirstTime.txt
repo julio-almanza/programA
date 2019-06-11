@@ -8,8 +8,10 @@
 		git remote add origin https://github.com/julio-almanza/programA.git
 6.- Now your local and remote are linked.
 7.- Copy to this folder your project source.
-8.- Go back to the command line and type the command:
-	Do a pull to update the last version of the code.
+8.- Go back to the command line and type the command to do a pull to update the last version of the code:
+	git pull https://github.com/julio-almanza/programA.git
+9.- Create your own branch with the command:
+	git checkout -b YourBranchName
 9.- Type the command:
 	git add .
 10.- Do a Pull request.
