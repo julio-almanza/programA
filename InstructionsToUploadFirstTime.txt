@@ -1,0 +1,14 @@
+1.- Create a local repository for your git repo.
+2.- Open a command line window.
+3.- Go to the local repository path.
+4.- Type git init
+5.- Link the remote repo with your local wit the command:
+    git remote add origin <<Origin>>
+	Example:
+		git remote add origin https://github.com/julio-almanza/programA.git
+6.- Now your local and remote are linked.
+7.- Copy to this folder your project source.
+8.- Go back to the command line and type the command:
+	add .
+9.- Do a Pull request.
+	git push origin master
