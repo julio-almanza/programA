@@ -17,35 +17,74 @@ public class Excel {
 	private Row row = null;
 	private Cell cell = null;	
 	private String str_filepath;
+	private static final String str_defaultpath ="C:\\Test0\\AutozoneTraining\\";
+	private static final String str_extensionfile = ".xls";
+	private static FileName fn = null;
 		
 	
 	public Excel(String str_filepath, String str_sheet) throws IOException {
+		String str_filename  = "";
 		
 		tmpdir = new File(str_filepath);
-		if(tmpdir.exists()) {
-			File file = new File(str_filepath);
-			FileInputStream fis = new FileInputStream(file);
-			
-			workbook = new XSSFWorkbook(fis);
-			sheet = workbook.getSheet(str_sheet);
-			int_currentrow = 0;
-			int_currentcolumn = 0;
-			this.str_filepath = str_filepath;
-			
-		}
-		else{
-			try {
-				tmpdir.createNewFile();
-				workbook = new XSSFWorkbook();
-				sheet = workbook.createSheet(str_sheet);
+		if(tmpdir.getName().length() > 0) {
+			if(tmpdir.exists()) {
+				File file = new File(str_filepath);
+				FileInputStream fis = new FileInputStream(file);
+				
+				workbook = new XSSFWorkbook(fis);
+				sheet = workbook.getSheet(str_sheet);
 				int_currentrow = 0;
 				int_currentcolumn = 0;
-				this.str_filepath = str_filepath;
+				this.str_filepath = str_filepath;				
+			}
+			else{
+				try {
+					tmpdir.createNewFile();
+					workbook = new XSSFWorkbook();
+					sheet = workbook.createSheet(str_sheet);
+					int_currentrow = 0;
+					int_currentcolumn = 0;
+					this.str_filepath = str_filepath;
+					
+				}catch(IOException ioe) {
+					System.out.println("Error while creating file" + ioe.getMessage());
+				}		
+			}	
+		}
+		else {
+			fn = new FileName();
+			str_filename = fn.createRandomName(str_extensionfile);
+			str_filepath = str_filepath +  str_filename;
+			tmpdir = new File(str_filepath);
+			if(tmpdir.exists()){
+				File file = new File(str_filepath);
+				FileInputStream fis = new FileInputStream(file);
 				
-			}catch(IOException ioe) {
-				System.out.println("Error while creating file" + ioe.getMessage());
-			}		
-		}	
+				workbook = new XSSFWorkbook(fis);
+				sheet = workbook.getSheet(str_sheet);
+				int_currentrow = 0;
+				int_currentcolumn = 0;
+				this.str_filepath = str_filepath;				
+			}
+			else{
+				try {
+					tmpdir.createNewFile();
+					workbook = new XSSFWorkbook();
+					sheet = workbook.createSheet(str_sheet);
+					int_currentrow = 0;
+					int_currentcolumn = 0;
+					this.str_filepath = str_filepath;
+					
+				}catch(IOException ioe) {
+					System.out.println("Error while creating file" + ioe.getMessage());
+				}		
+			}	
+			
+		}
+		
+		
+		
+		
 	}
 	
 	public int getInt_currentrow() {
